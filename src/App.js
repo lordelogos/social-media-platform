@@ -1,11 +1,12 @@
 import "./App.css";
-import Posts from "./components/Posts";
+import Nav from "./components/Nav";
+import Feed from "./components/Feed";
 
 function App() {
 	return (
 		<div className="App">
-			<div>IG_CLONE</div>
-			<Posts />
+			<Nav />
+			<Feed />
 		</div>
 	);
 }

@@ -1,5 +1,93 @@
-.emoji-mart-scroll {
-	position: absolute;
-	top: 50px;
-	left: 0;
+.post {
+	width: 100%;
+	background-color: white;
+	color: #262626;
+	max-width: 400px;
+	margin: 20px 0;
+}
+
+.post__nav {
+	display: flex;
+	align-items: center;
+	width: calc(100% - 20px);
+	padding: 10px 10px 10px 10px;
+	background-color: white;
+}
+
+.post__nav > .MuiSvgIcon-root {
+	margin-left: auto;
+}
+
+.post__nav > .MuiAvatar-root {
+	margin-right: 10px;
+	height: 30px;
+	width: 30px;
+}
+
+.post__image {
+	width: 100%;
+	height: 360px;
+	background-color: blue;
+}
+
+.post__content {
+	margin: auto;
+	width: calc(100% - 20px);
+	padding: 10px 5px;
+	text-align: left;
+}
+
+.post__stats,
+.post__cta {
+	width: calc(100% - 20px);
+	padding: 5px 10px;
+	display: flex;
+	align-items: center;
+}
+
+.post__stats > span {
+	display: flex;
+	align-items: center;
+}
+
+.post__stats {
+	margin: 10px auto;
+}
+
+.post__cta {
+	margin: auto;
+	width: calc(100% - 20px);
+	padding: 0;
+	border-top: solid 1px black;
+	border-bottom: solid 1px black;
+}
+
+.post__cta > div {
+	transition: 0.3s;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	width: 50%;
+	justify-content: center;
+}
+
+.post__cta > div:hover {
+	background-color: rgb(192, 192, 192);
+}
+
+.post__stats__comments {
+	margin-left: auto;
+}
+
+.add_comment {
+	width: 100%;
+}
+
+.post__comments {
+	width: calc(100% - 20px);
+	margin: 10px auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }

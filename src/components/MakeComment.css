@@ -1,0 +1,27 @@
+.makecomment {
+	width: calc(100% - 10px);
+	display: flex;
+	align-items: center;
+	padding: 5px;
+}
+
+.react-input-emoji--input {
+	background-color: transparent !important;
+}
+
+.react-input-emoji--input {
+	font-weight: 400;
+	max-height: 20px;
+	outline: none;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: relative;
+	white-space: nowrap;
+	word-wrap: break-word;
+	z-index: 1;
+	width: 100%;
+	max-width: 200px;
+	user-select: auto;
+	padding: 9px 12px 11px;
+	text-align: left;
+}

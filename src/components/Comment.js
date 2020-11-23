@@ -1,23 +1,17 @@
-import React, { useState } from "react";
-import InputEmoji from "react-input-emoji";
-import "./Posts.css";
+import React from "react";
+import "./Comment.css";
+import { Avatar } from "@material-ui/core";
 
-let Posts = () => {
-	const [text, setText] = useState("");
-
-	function handleOnEnter(text) {
-		console.log("enter", text);
-	}
-
+function Comment() {
 	return (
-		<InputEmoji
-			value={text}
-			onChange={setText}
-			cleanOnEnter
-			onEnter={handleOnEnter}
-			placeholder="Type a message"
-		/>
+		<div className="comment">
+			<Avatar />
+			<div className="comment__text">
+				<p>Name Name</p>
+				<p>Comment text goes here..</p>
+			</div>
+		</div>
 	);
-};
+}
 
-export default Posts;
+export default Comment;
