@@ -2,7 +2,7 @@ import "./Create.css";
 import React, { useState } from "react";
 import { Input, Button } from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../config/Firebase";
+import { auth, db } from "../config/Firebase";
 
 function Create() {
 	let history = useHistory();
@@ -18,6 +18,16 @@ function Create() {
 			.then((res) => {
 				const user = auth.currentUser;
 				history.push("/profile");
+				db.collection("users")
+					.doc(user.uid)
+					.set({
+						name: name,
+						bio: "Bio Goes here",
+						fileURL: `https://avatar.oxro.io/avatar.svg?name=${name}&length=2`,
+						following: 0,
+						followers: 0,
+						id: user.uid,
+					});
 				return user.updateProfile({
 					displayName: name,
 				});
