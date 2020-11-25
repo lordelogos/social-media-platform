@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
+
+.create {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.create__title {
+	font-family: "Neucha", cursive;
+	color: #3f51b5;
+	font-size: 30px;
+	letter-spacing: 1px;
+	margin-top: 20px;
+}
+
+.create__card {
+	border: solid 1px rgb(219, 219, 219);
+	background-color: white;
+	padding: 10px 15px 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 75%;
+	max-width: 350px;
+	margin-bottom: 20px;
+}
+
+.create__form {
+	width: 100%;
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.create__form > .MuiInput-root {
+	margin-bottom: 20px;
+}

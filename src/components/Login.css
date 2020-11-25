@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
+
+.login {
+	width: 100vw;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	justify-content: center;
+}
+
+.login__img {
+	margin: auto;
+	width: 200px;
+	width: 280px;
+	height: 300px;
+	background-image: url("../test.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-bottom: 10vh;
+}
+
+.login__card {
+	border: solid 1px rgb(219, 219, 219);
+	margin-top: 30vh;
+	background-color: white;
+	padding: 10px 15px 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 75%;
+	max-width: 350px;
+	margin-bottom: 20px;
+}
+
+.login__title {
+	font-family: "Neucha", cursive;
+	color: #3f51b5;
+	font-size: 30px;
+	letter-spacing: 1px;
+	margin-top: 20px;
+}
+
+.login__form {
+	width: 100%;
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.login__form > .MuiInput-root {
+	margin-bottom: 20px;
+}
+
+.login__cta {
+	width: 100%;
+	margin: 10px 0;
+}
+
+.login__cta > span {
+	font-weight: 600;
+	color: #3f51b5;
+}
+
+.toSignUp {
+	width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+	.login {
+		flex-direction: row;
+	}
+
+	.login {
+		margin: auto;
+		width: 70vw;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.login__card {
+		margin-top: 0;
+		margin: auto;
+	}
+
+	.login__img {
+		margin-top: 0;
+		margin-bottom: 0vh;
+	}
+}

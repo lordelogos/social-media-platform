@@ -1,0 +1,57 @@
+.edit {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(49, 49, 49, 0.5);
+	z-index: 100;
+}
+
+.edit__card {
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	width: 80%;
+	max-width: 500px;
+	display: flex;
+	flex-direction: column;
+}
+
+.edit__form {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.edit__form > progress {
+	appearance: none;
+	-webkit-appearance: none;
+	align-self: center;
+	margin-bottom: 20px;
+}
+
+.edit__form > .MuiInputBase-root {
+	margin-bottom: 20px !important;
+}
+
+.edit__form > label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+.edit__form > label > input[type="file"] {
+	display: none;
+}
+
+.edit__form > div {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}

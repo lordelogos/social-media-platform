@@ -1,5 +1,6 @@
 .post {
-	width: 100%;
+	margin: auto;
+	width: 95%;
 	background-color: white;
 	color: #262626;
 	max-width: 400px;
@@ -22,6 +23,7 @@
 	margin-right: 10px;
 	height: 30px;
 	width: 30px;
+	border: #3f51b5 solid 1px;
 }
 
 .post__image {

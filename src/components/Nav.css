@@ -11,6 +11,11 @@ nav {
 	margin-bottom: 10px;
 }
 
+.nav > svg {
+	width: 103px;
+	height: 29px;
+}
+
 .nav__search {
 	padding: 1px 10px 0 5px;
 	display: flex;
@@ -30,12 +35,10 @@ nav {
 	justify-content: space-between;
 }
 
-.nav__cta > .MuiAvatar-root {
-	height: 24px;
-	width: 24px;
-}
-
 @media screen and (max-width: 600px) {
+	.nav {
+		width: 50%;
+	}
 	.nav__search {
 		display: none;
 	}

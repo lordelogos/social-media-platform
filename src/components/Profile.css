@@ -1,0 +1,76 @@
+.profile {
+	margin: auto;
+	width: 99%;
+	max-width: 700px;
+	height: 100%;
+}
+
+.profile__nav {
+	display: flex;
+	align-items: center;
+	padding: 10px 5px;
+}
+
+.profile__info {
+	flex: 1;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.profile__nav > .MuiAvatar-root {
+	height: 80px;
+	width: 80px;
+	margin: 10px 10px;
+	border: solid 1px #3f51b5;
+}
+
+.profile__info > p {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.profile__bio {
+	width: calc(100% - 20px);
+	padding: 0 10px;
+	text-align: left;
+}
+
+.profile__stats {
+	width: calc(100% - 20px);
+	margin: 10px 10px;
+	display: flex;
+	align-items: center;
+	border-top: solid 1px;
+	border-bottom: solid 1px;
+}
+
+.profile__stats > span {
+	width: 50%;
+	padding: 10px 0;
+	cursor: pointer;
+}
+
+.profile__stats > span > p {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.profile__stats > span:hover {
+	background-color: rgb(129, 129, 129);
+}
+
+@media screen and (min-width: 768px) {
+	.profile__info {
+		flex: 1;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+	}
+}
