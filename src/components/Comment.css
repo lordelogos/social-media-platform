@@ -12,7 +12,13 @@
 	align-items: flex-start;
 	margin-left: 10px;
 	padding: 5px;
-	background-color: rgb(80, 79, 79);
-	color: white;
+	background-color: rgb(241, 240, 240);
+	color: black;
 	border-radius: 10px;
+}
+
+.comment__maker {
+	font-size: 14px;
+	font-weight: 800;
+	margin-bottom: 3px;
 }

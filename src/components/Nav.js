@@ -21,7 +21,7 @@ function Nav() {
 		}
 	}, [user]);
 	return (
-		<nav>
+		<nav className="main_nav_bar">
 			<Link to="/">
 				<div className="nav">
 					<Logo />

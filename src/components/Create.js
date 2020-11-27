@@ -24,8 +24,6 @@ function Create() {
 						name: name,
 						bio: "Bio Goes here",
 						fileURL: `https://avatar.oxro.io/avatar.svg?name=${name}&length=2`,
-						following: 0,
-						followers: 0,
 						id: user.uid,
 					});
 				return user.updateProfile({
@@ -44,9 +42,10 @@ function Create() {
 				<form className="create__form" onSubmit={handleSignUp}>
 					<Input
 						type="text"
-						placeholder="Username"
+						placeholder="Username 20 characters"
 						autoFocus={true}
 						value={name}
+						inputProps={{ maxLength: 20 }}
 						onChange={(e) => setName(e.target.value)}
 						required
 					/>

@@ -56,9 +56,10 @@ function EditProfile(props) {
 				<form className="edit__form" onSubmit={handleUpdate}>
 					<Input
 						type="text"
-						placeholder="Username"
+						placeholder="Username 20 characters"
 						autoFocus={true}
 						value={name}
+						inputProps={{ maxLength: 20 }}
 						onChange={(e) => setName(e.target.value)}
 					/>
 					<Input

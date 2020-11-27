@@ -17,7 +17,7 @@ function Comment(props) {
 		<div className="comment">
 			<Avatar src={img} />
 			<div className="comment__text">
-				<p>{props.data.name}</p>
+				<p className="comment__maker">{props.data.name}</p>
 				<p>
 					<Twemoji text={props.data.text} className="twemoji" />
 				</p>

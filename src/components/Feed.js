@@ -26,7 +26,14 @@ function Feed() {
 			{addPost ? (
 				<AddPost togglePost={() => togglePost()} />
 			) : (
-				<Button variant="contained" onClick={togglePost} color="primary">
+				<Button
+					variant="contained"
+					onClick={togglePost}
+					style={{
+						backgroundColor: "#abe9cd",
+						backgroundImage: "linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%)",
+						color: "white",
+					}}>
 					Create Post
 				</Button>
 			)}

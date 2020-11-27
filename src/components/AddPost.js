@@ -61,7 +61,6 @@ function AddPost(props) {
 					photo: fileURL,
 					name: user.displayName,
 					created_by: user.uid,
-					likes: 0,
 					timestamp: Firebase.firestore.FieldValue.serverTimestamp(),
 				});
 				setPost("");
@@ -85,8 +84,10 @@ function AddPost(props) {
 					<IconButton onClick={props.togglePost}>
 						<CloseIcon
 							style={{
-								fill: "black",
-								background: "#E0e0e0",
+								fill: "white",
+								backgroundColor: "#f7b42c",
+								backgroundImage:
+									"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%",
 								borderRadius: "50%",
 								padding: "5px",
 							}}
@@ -122,7 +123,15 @@ function AddPost(props) {
 						{value}%
 					</progress>
 
-					<Button onClick={handlePost} variant="contained" color="primary">
+					<Button
+						onClick={handlePost}
+						variant="contained"
+						style={{
+							backgroundColor: "#abe9cd",
+							backgroundImage:
+								"linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%)",
+							color: "white",
+						}}>
 						Add Post
 					</Button>
 				</div>

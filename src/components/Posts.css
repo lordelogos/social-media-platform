@@ -26,9 +26,13 @@
 	border: #3f51b5 solid 1px;
 }
 
+.post__nav__name {
+	font-weight: 800;
+}
+
 .post__image {
 	width: 100%;
-	height: 360px;
+	height: auto;
 	background-color: transparent;
 }
 
@@ -60,22 +64,17 @@
 	margin: auto;
 	width: calc(100% - 20px);
 	padding: 0;
-	border-top: solid 1px black;
-	border-bottom: solid 1px black;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
-.post__cta > div {
-	transition: 0.3s;
+.post__cta > button {
 	cursor: pointer;
 	display: flex;
 	align-items: center;
-	padding: 10px;
-	width: 50%;
+	padding: 5px 10px;
 	justify-content: center;
-}
-
-.post__cta > div:hover {
-	background-color: rgb(192, 192, 192);
 }
 
 .post__stats__comments {
@@ -88,6 +87,9 @@
 
 .post__comments {
 	width: calc(100% - 20px);
+	overflow-y: scroll;
+	height: fit-content;
+	max-height: 200px;
 	margin: 10px auto;
 	display: flex;
 	flex-direction: column;

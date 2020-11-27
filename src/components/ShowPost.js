@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../config/Firebase";
 import CloseIcon from "@material-ui/icons/Close";
+import Comment from "./Comment";
 import "./ShowPost.css";
 import MakeComment from "./MakeComment";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
@@ -13,6 +14,23 @@ function ShowPost() {
 	const id = useParams();
 	const [post, setPost] = useState(null);
 	const [posted_by, setPosted_by] = useState(null);
+
+	const [comments, setComments] = useState([]);
+	useEffect(() => {
+		db.collection("posts")
+			.doc(id.id)
+			.collection("comments")
+			.onSnapshot((snapshot) => {
+				if (snapshot.docs.length > 0) {
+					setComments(
+						snapshot.docs.map((doc) => ({
+							id: doc.id,
+							data: doc.data(),
+						}))
+					);
+				}
+			});
+	}, []);
 
 	useEffect(() => {
 		db.collection("posts")
@@ -27,18 +45,26 @@ function ShowPost() {
 
 	return (
 		<div className="showpost">
-			<CloseIcon
-				fontSize="large"
-				style={{ fill: "white" }}
-				onClick={() => history.push("/explore")}
-			/>
 			<div className="showpost__card">
 				<img src={post?.photo} alt={post?.created_by} />
 				<div className="showpost__info">
 					<div className="showpost__nav">
+						<CloseIcon
+							fontSize="large"
+							style={{ fill: "black" }}
+							onClick={() => history.push("/explore")}
+						/>
 						<Avatar src={posted_by} />
 						<p>{post?.name}</p>
-						<Button variant="contained" color="primary" size="small">
+						<Button
+							variant="contained"
+							style={{
+								backgroundColor: "#abe9cd",
+								backgroundImage:
+									"linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%)",
+								color: "white",
+							}}
+							size="small">
 							Follow
 						</Button>
 					</div>
@@ -48,18 +74,40 @@ function ShowPost() {
 					<div className="showpost__stats">
 						<p>{`${post?.likes} likes`}</p>
 					</div>
+
 					<div className="showpost__cta">
-						<div>
+						<Button
+							variant="contained"
+							style={{
+								backgroundColor: "#f7b42c",
+								backgroundImage:
+									"linear-gradient(315deg, #f7b42c 0%, #fc575e 74%",
+								color: "white",
+							}}>
 							<FavoriteBorderIcon />
-							<span>Like</span>
-						</div>
-						<div>
+							<span> Like</span>
+						</Button>
+						<Button
+							variant="contained"
+							style={{
+								backgroundColor: "#abe9cd",
+								backgroundImage:
+									"linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%)",
+								color: "white",
+							}}>
 							<ChatBubbleOutlineIcon />
-							<span>Comment</span>
-						</div>
+							<span> Comment</span>
+						</Button>
+					</div>
+					<div className="showpost__comments">
+						{comments.length > 0
+							? comments.map((comment) => (
+									<Comment key={comment.id} data={comment.data} />
+							  ))
+							: ""}
 					</div>
 					<div className="showpost_add_comment">
-						<MakeComment />
+						<MakeComment id={id.id} />
 					</div>
 				</div>
 			</div>
