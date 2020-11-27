@@ -1,6 +1,6 @@
 .explorepost {
 	width: 100%;
-	min-height: 100px;
+	/* min-height: 50px; */
 	position: relative;
 	cursor: pointer;
 }
@@ -10,7 +10,7 @@
 	width: 100%;
 	height: 100%;
 
-	background-color: blue;
+	background-color: transparent;
 }
 
 .explorepost:hover > .explorepost__stats {

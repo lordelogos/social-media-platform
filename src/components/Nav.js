@@ -29,7 +29,7 @@ function Nav() {
 			</Link>
 			<div className="nav__search">
 				<SearchIcon />
-				<Input disableUnderline={true} placeholder="Search" />
+				<Input disableUnderline={true} placeholder="Search" disabled />
 			</div>
 			{user ? (
 				<div className="nav__cta">

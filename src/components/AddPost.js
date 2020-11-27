@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar } from "@material-ui/core";
 import { Input } from "@material-ui/core";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
@@ -7,28 +7,75 @@ import "./AddPost.css";
 import CloseIcon from "@material-ui/icons/Close";
 import { IconButton } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import firebase, { db } from "../config/Firebase";
+import Firebase from "firebase";
+import { useStateValue } from "../config/StateProvider";
 
 function AddPost(props) {
-	// let handleUpload = (e) => {
-	// 	let file = e.target.files[0];
-	// 	let storageRef = firebase.storage().ref("FOLDER_NAME/FILE_NAME");
-	// 	let task = storageRef.put(file);
-	// 	task.on("state_changed"),
-	// 		function progress(snapshot){
-	// 			let percentage =
-	// 				(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-	// 			document.querySelector(".upload").value = percentage;
-	//         };
+	const [{ user }] = useStateValue();
+	const [value, setValue] = useState(0);
+	const [fileURL, setFileURL] = useState(null);
+	const [post, setPost] = useState("");
+	const [error, setError] = useState("");
+	const [img, setImg] = useState(null);
 
-	//         function error(err){
-	//             alert('Error: ', err)
-	//         };
+	useEffect(() => {
+		if (user) {
+			db.collection("users")
+				.doc(user.uid)
+				.onSnapshot((snapshot) => setImg(snapshot.data().fileURL));
+		}
+	}, [user]);
 
-	//         function complete(){
-	//             console.log('completed')
-	//         }
-	// };
+	let handleUpload = async (e) => {
+		let file = e.target.files[0];
+		//storage Ref
+		let storageRef = firebase.storage().ref();
+		//create file ref
+		let fileRef = storageRef.child(file.name);
+		//upload file
+		let task = fileRef.put(file);
+		//update progress bar
+		task.on(
+			"state_changed",
+			(snapshot) => {
+				const progress =
+					(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+				setValue(progress);
+			},
+			(error) => console.log({ error: error.message }),
+			async () => {
+				setFileURL(await fileRef.getDownloadURL());
+			}
+		);
+	};
+
 	let history = useHistory();
+
+	let handlePost = () => {
+		if (user) {
+			if ((post.trim() !== "" && post !== null) || fileURL !== null) {
+				console.log(post.trim(), fileURL);
+				db.collection("posts").add({
+					text: post.trim(),
+					photo: fileURL,
+					name: user.displayName,
+					created_by: user.uid,
+					likes: 0,
+					timestamp: Firebase.firestore.FieldValue.serverTimestamp(),
+				});
+				setPost("");
+				setFileURL(null);
+				props.togglePost();
+			} else {
+				setError("Post Cannot be empty");
+				setTimeout(() => {
+					setError("");
+					setPost("");
+				}, 1500);
+			}
+		}
+	};
 
 	return (
 		<div className="addpost">
@@ -47,14 +94,16 @@ function AddPost(props) {
 					</IconButton>
 				</div>
 				<div className="addpost__user">
-					<Avatar />
-					<p>User name</p>
+					<Avatar src={img} />
+					<p>{user?.displayName}</p>
 				</div>
 				<Input
 					disableUnderline={true}
-					placeholder="What's on your mind?"
+					placeholder={error !== "" ? error : "What's on your mind?"}
 					multiline={true}
 					rows={13}
+					value={post}
+					onChange={(e) => setPost(e.target.value)}
 					autoFocus={true}
 					style={{
 						fontSize: "16px",
@@ -65,15 +114,15 @@ function AddPost(props) {
 						<AddPhotoAlternateIcon />
 						<input
 							type="file"
-							// onChange={handleUpload}
+							onChange={handleUpload}
 							accept="image/x-png,image/jpeg"
 						/>
 					</label>
-					<progress value="100" max="100" className="upload">
-						100%
+					<progress value={value} min="0" max="100" className="upload">
+						{value}%
 					</progress>
 
-					<Button variant="contained" color="primary">
+					<Button onClick={handlePost} variant="contained" color="primary">
 						Add Post
 					</Button>
 				</div>

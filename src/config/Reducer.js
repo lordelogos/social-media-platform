@@ -1,5 +1,6 @@
 export const initialState = {
 	user: null,
+	posts: [],
 };
 
 const reducer = (state, action) => {
@@ -9,6 +10,11 @@ const reducer = (state, action) => {
 				...state,
 				user: action.user,
 			};
+		case "SET_POSTS":
+			return {
+				...state,
+				posts: action.posts
+			}
 		default:
 			return state;
 	}

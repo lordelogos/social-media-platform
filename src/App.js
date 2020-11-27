@@ -9,7 +9,7 @@ import Login from "./components/Login";
 import Create from "./components/Create";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useStateValue } from "./config/StateProvider";
-import { auth } from "./config/Firebase";
+import { auth, db } from "./config/Firebase";
 
 function App() {
 	const [{ user }, dispatch] = useStateValue();
@@ -34,6 +34,22 @@ function App() {
 			unsubscribe();
 		};
 	}, []);
+
+	useEffect(() => {
+		if (user) {
+			db.collection("posts")
+				.orderBy("timestamp", "desc")
+				.onSnapshot((snapshot) => {
+					dispatch({
+						type: "SET_POSTS",
+						posts: snapshot.docs.map((doc) => ({
+							id: doc.id,
+							data: doc.data(),
+						})),
+					});
+				});
+		}
+	}, [user]);
 
 	return (
 		<div className="App">

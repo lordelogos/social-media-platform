@@ -4,7 +4,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import { Link } from "react-router-dom";
 
-function ExplorePost() {
+function ExplorePost({ id, data }) {
 	const [height, setHeight] = useState("100px");
 
 	const imgRef = useRef();
@@ -30,15 +30,15 @@ function ExplorePost() {
 	};
 
 	return (
-		<Link to="/p/12">
+		<Link to={`/p/${id}`}>
 			<div className="explorepost" style={imageSize} ref={imgRef}>
-				<img src="" alt="" />
+				<img src={data.photo} alt={data.name} />
 				<div className="explorepost__stats">
 					<span>
-						<FavoriteIcon /> 10
+						<FavoriteIcon /> {data.likes}
 					</span>
 					<span>
-						<ChatBubbleIcon /> 10
+						<ChatBubbleIcon /> {data.likes}
 					</span>
 				</div>
 			</div>

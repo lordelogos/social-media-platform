@@ -29,14 +29,16 @@
 	border: #3f51b5 solid 1px;
 }
 
-.showpost__nav > .MuiSvgIcon-root {
+.showpost__nav > .MuiButton-root {
 	margin-left: auto;
+	cursor: pointer;
 }
 
 .showpost > .MuiSvgIcon-root {
 	position: fixed;
 	top: 15px;
 	right: 15px;
+	cursor: pointer;
 }
 
 .showpost__card {
@@ -53,8 +55,10 @@
 .showpost__card > img {
 	margin-top: calc(10% + 1px);
 	width: 100%;
+	min-height: 50%;
 	height: 80%;
-	background-color: blue;
+	max-height: 80%;
+	background-color: transparent;
 }
 
 .showpost__stats {
@@ -117,11 +121,12 @@
 	.showpost__card > img {
 		margin-top: 0;
 		height: 100%;
-		width: 65%;
+		max-height: 100%;
+		width: 60%;
 	}
 
 	.showpost__info {
-		width: 35%;
+		width: 40%;
 		display: flex;
 		flex-direction: column;
 	}
@@ -129,6 +134,7 @@
 	.showpost__textContent {
 		width: calc(100% - 20px);
 		padding: 5px 10px;
+		text-align: left;
 		flex: 1;
 		display: block;
 	}

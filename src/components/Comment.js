@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Comment.css";
 import { Avatar } from "@material-ui/core";
+import { db } from "../config/Firebase";
+import { Twemoji } from "react-emoji-render";
 
-function Comment() {
+function Comment(props) {
+	const [img, setImg] = useState("");
+
+	useEffect(() => {
+		db.collection("users")
+			.doc(props.data.id)
+			.onSnapshot((snapshot) => setImg(snapshot.data().fileURL));
+	}, []);
+
 	return (
 		<div className="comment">
-			<Avatar />
+			<Avatar src={img} />
 			<div className="comment__text">
-				<p>Name Name</p>
-				<p>Comment text goes here..</p>
+				<p>{props.data.name}</p>
+				<p>
+					<Twemoji text={props.data.text} className="twemoji" />
+				</p>
 			</div>
 		</div>
 	);
